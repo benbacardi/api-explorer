@@ -1,2 +1,2 @@
-api-explorer
+API Explorer
 ============

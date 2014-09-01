@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+<head>
+
+    <meta charset='utf-8' />
+    <meta http-equiv='Content-Language' content='en' />
+    
+    <title>API Explorer</title>
+
+    <link rel='stylesheet' type='text/css' href='normalize.css' />
+
+    <style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        padding-top: 50px; /* Temporary */
+    }
+
+    .container {
+        width: 980px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    /* Options */
+
+    .options-url {
+        font-size: 1.4rem;
+        padding: 0.5rem;
+        width: 100%;
+        border-radius: 5px;
+        border: 0.4rem solid #ccc;
+        outline: none;
+        vertical-align: middle;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .options-url:focus {
+        border-color: #51a7e8;
+        color: #222;
+        box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
+    }
+
+    .options-method-choice {
+        font-weight: bold;
+        background-color: #ccc;
+        float: left;
+        padding: 0.5rem;
+        border-right: 1px solid #aaa;
+        cursor: pointer;
+        color: #333;
+        letter-spacing: 0.05rem;
+    }
+
+    .options-method-chosen {
+        background-color: #51a7e8;
+        color: #fff;
+    }
+
+    .options-method-choice:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .options-method-choice:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-right: none;
+    }
+
+    .option {
+        margin-right: 1rem;
+    }
+
+    .options-redirects-label {
+        padding: 0.5rem;
+        display: inline-block;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class='container'>
+
+        <h1>API Explorer</h1>
+
+        <div class='options'>
+
+            <input type='text' class='options-url' name='url' value='https://github.com/timeline.json' />
+            <div class='option options-method'>
+                <a class='options-method-choice options-method-get options-method-chosen' data-method='GET'>GET</a>
+                <a class='options-method-choice options-method-post' data-method='POST'>POST</a>
+            </div>
+            <label for='follow-redirects' class='option options-redirects-label'>
+                <input type='checkbox' checked name='follow-redirects' class='options-redirects' />
+                Follow redirects
+            </label>
+
+        </div>
+        <!-- /.options -->
+
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>

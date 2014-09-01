@@ -1,0 +1,15 @@
+API options:
+
+Simple:
+    - Method (GET/POST)
+    - Parameters
+    - Authentication (username/password)
+    - Follow redirects (bool=false)
+    
+Advanced:
+    - Extra headers (key=value pairs)
+    - Verify SSL (bool=true)
+    - Method (PUT/DELETE/PATCH/OPTIONS/HEAD)
+    - Request body (form params, or a string)
+    - Cookies
+    
