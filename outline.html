@@ -19,6 +19,8 @@
 
     body {
         padding-top: 50px; /* Temporary */
+        font: 13px Helvetica, arial, freesans, clean, sans-serif;
+        line-height: 1.4;
     }
 
     .container {
@@ -27,7 +29,51 @@
         margin-left: auto;
     }
 
+    /* Buttons */
+
+    .button {
+        background: #4183c4;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 0 0.5rem;
+        line-height: 2rem;
+        border-radius: 5px;
+        font-weight: bold;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .button:hover {
+    }
+
+    .button-deselected {
+        background: white;
+        color: #666;
+        border: 1px solid #ccc;
+    }
+
+    .button-deselected:hover {
+        background: #f5f5f5;
+    }
+
+    .button-submit {
+        background-color: #60b044;
+    }
+
     /* Options */
+
+    .options {
+        margin-bottom: 2rem;
+    }
+
+    .clear:before, .clear:after {
+        content: " ";
+        display: table;
+    }
+
+    .clear:after {
+        clear: both;
+    }
 
     .options-url {
         font-size: 1.4rem;
@@ -41,26 +87,17 @@
         margin-bottom: 1rem;
     }
 
-    .options-url:focus {
+    input[type=text]:focus {
         border-color: #51a7e8;
         color: #222;
         box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
     }
 
     .options-method-choice {
-        font-weight: bold;
-        background-color: #ccc;
         float: left;
-        padding: 0.5rem;
-        border-right: 1px solid #aaa;
-        cursor: pointer;
-        color: #333;
         letter-spacing: 0.05rem;
-    }
-
-    .options-method-chosen {
-        background-color: #51a7e8;
-        color: #fff;
+        border-radius: 0;
+        border-left: none;
     }
 
     .options-method-choice:first-child {
@@ -71,16 +108,70 @@
     .options-method-choice:last-child {
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-        border-right: none;
-    }
-
-    .option {
         margin-right: 1rem;
     }
 
-    .options-redirects-label {
-        padding: 0.5rem;
+    .options-redirects-label, .options-auth-label {
+        padding: 0 0.5rem;
+        line-height: 2rem;
         display: inline-block;
+        float: left;
+    }
+
+    .options-auth-user, .options-auth-pass {
+        border: 1px solid #ccc;
+        color: #333;
+        height: 2rem;
+        outline: none;
+        padding: 0.5rem;
+        width: 100px;
+        border-radius: 5px;
+    }
+
+    .options-auth-user {
+        margin-left: 0.5rem;
+    }
+
+    input[type=checkbox] {
+        margin: 0 0.4rem;
+    }
+
+    .options-submit {
+        float: right;
+        margin-left: 1rem;
+    }
+
+    /* Results */
+
+    .results {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .results-header {
+        background: #f5f5f5;
+    }
+
+    .results-links, .results-links li {
+        padding: 0;
+        margin: 0;
+        list-style-type: none; 
+    }
+
+    .results-links li {
+        float: left;
+    }
+
+    .results-links li a {
+        display: inline-block;
+        line-height: 3rem;
+        padding: 0 1rem;
+        text-decoration: none;
+        color: #666;
+    }
+
+    .results-active a {
+        font-weight: bold;
     }
 
     </style>
@@ -93,20 +184,52 @@
 
         <h1>API Explorer</h1>
 
-        <div class='options'>
+        <div class='options clear'>
 
             <input type='text' class='options-url' name='url' value='https://github.com/timeline.json' />
-            <div class='option options-method'>
-                <a class='options-method-choice options-method-get options-method-chosen' data-method='GET'>GET</a>
-                <a class='options-method-choice options-method-post' data-method='POST'>POST</a>
+
+            <div class='options-method'>
+                <a class='button options-method-choice options-method-get options-method-chosen' data-method='GET'>GET</a>
+                <a class='button button-deselected options-method-choice options-method-post' data-method='POST'>POST</a>
             </div>
-            <label for='follow-redirects' class='option options-redirects-label'>
-                <input type='checkbox' checked name='follow-redirects' class='options-redirects' />
+
+            <div class='options-auth'>
+                <label for='auth-user' class='options-auth-label'>
+                    Auth:
+                    <input type='text' class='options-auth-user' name='auth-user' id='auth-user' placeholder='Username' />
+                    <input type='text' class='options-auth-pass' name='auth-pass' placeholder='Password' />
+                </label>
+            </div>
+
+            <label for='follow-redirects' class='options-redirects-label'>
+                <input type='checkbox' checked id='follow-redirects' name='follow-redirects' class='options-redirects' />
                 Follow redirects
             </label>
 
+            <input type='submit' class='button button-submit options-submit' value='Explore &#x276f;' />
+
         </div>
         <!-- /.options -->
+
+        <div class='results'>
+
+            <div class='results-header'>
+    
+                <ul class='results-links clear'>
+                    <li class='results-active'><a href='#json'>JSON</a></li>
+                    <li><a href='#raw'>Raw</a></li>
+                </ul>
+
+            </div>
+            
+            <div class='results-raw'>
+                <pre>
+{"message":"Hello there, wayfaring stranger. If you're reading this then you probably didn't see our blog post a couple of years back announcing that this API would go away: http://git.io/17AROg Fear not, you should be able to get what you need from the shiny new Events API instead.","documentation_url":"https://developer.github.com/v3/activity/events/#list-public-events"}
+                </pre>
+            </div>
+
+        </div>
+        <!-- /.results -->
 
     </div>
     <!-- /.container -->
